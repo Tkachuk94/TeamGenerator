@@ -88,10 +88,10 @@ generateHTML = (data) => {
         
     }
 
-    // joining strings 
+//Adds additional Employees to array
     const employeeCards = pageArray.join('')
 
-    // return to generated page
+//Returns the generated Team
     const generateTeam = generateTeamPage(employeeCards); 
     return generateTeam;
 

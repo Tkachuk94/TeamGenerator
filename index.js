@@ -133,7 +133,7 @@ const addEmployee = () => {
                 if (nameInput ) {
                     return true;
                 } else {
-                    console.log ("Please enter the employee's github username!")
+                    console.log ("Please provide Engineers Github name}")
                 }
             }
         },
@@ -158,8 +158,8 @@ const addEmployee = () => {
         }
     ])
     .then(employeeData => {
+        
 //Filters data requirements per selected role.
-
         let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
         let employee; 
 
@@ -184,7 +184,6 @@ const addEmployee = () => {
     })
 
 };
-
 
 //Writes to the index.html
 const writeFile = data => {
