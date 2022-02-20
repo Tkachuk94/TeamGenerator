@@ -1,19 +1,14 @@
-// link to page creation
 const generateHTML = require('./src/generateHTML');
-
-// team profiles
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern'); 
 const Manager = require('./lib/manager');
-
-// node modules 
 const fs = require('fs'); 
 const inquirer = require('inquirer');
 
-// team array
+//original Array
 const teamArray = []; 
 
-// start of manager prompts 
+//Creates Manager prompt
 const addManager = () => {
     return inquirer.prompt ([
         {
@@ -78,7 +73,7 @@ const addManager = () => {
         console.log(manager); 
     })
 };
-
+//Builds Employee
 const addEmployee = () => {
     console.log(`Adding New Employee`);
 
@@ -163,7 +158,7 @@ const addEmployee = () => {
         }
     ])
     .then(employeeData => {
-        // data for employee types 
+//Filters data requirements per selected role.
 
         let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
         let employee; 
@@ -191,20 +186,19 @@ const addEmployee = () => {
 };
 
 
-// function to generate HTML page file using file system 
+//Writes to the index.html
 const writeFile = data => {
-    fs.writeFile('./GeneratedHTML/index.html', data, err => {
-        // if there is an error 
+    fs.writeFile('./GeneratedHTML/index.html', data, err => { 
         if (err) {
             console.log(err);
             return;
-        // when the profile has been created 
         } else {
             console.log("Your team profile has been successfully created! Please check out the index.html")
         }
     })
 }; 
 
+//Forces manager to be created then leads to building additional members if required.
 addManager()
   .then(addEmployee)
   .then(teamArray => {
